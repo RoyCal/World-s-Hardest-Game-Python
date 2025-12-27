@@ -1,10 +1,10 @@
-import pygame
+import pygame as pg
 from settings import *
 from abc import ABC, abstractmethod
 
 class Enemy(ABC):
     def __init__(self, x, y, speed, game):
-        self.hitbox = pygame.Rect(x-15, y-15, 30, 30)
+        self.hitbox = pg.Rect(x-15, y-15, 30, 30)
         self.game = game
         self.x = self.hitbox.x + 15
         self.y = self.hitbox.y + 15
@@ -13,8 +13,8 @@ class Enemy(ABC):
         self.collided = False
 
     def draw(self):
-        pygame.draw.circle(self.game.tela, ENEMY_COLOR, (self.x, self.y), 15)
-        pygame.draw.circle(self.game.tela, "black", (self.x, self.y), 15, 6)
+        pg.draw.circle(self.game.tela, ENEMY_COLOR, (self.x, self.y), 15)
+        pg.draw.circle(self.game.tela, "black", (self.x, self.y), 15, 6)
 
     def update(self):
         self.movement()
@@ -31,7 +31,7 @@ class Enemy(ABC):
         pass
 
     def check_player_collision(self):
-        if pygame.Rect.colliderect(self.game.player.hitbox, self.hitbox):
+        if pg.Rect.colliderect(self.game.player.hitbox, self.hitbox):
             self.collided = True
         else:
             self.collided = False

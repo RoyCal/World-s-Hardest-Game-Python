@@ -3,7 +3,7 @@ from pygame.locals import *
 from sys import exit 
 from settings import *
 from levels.level1 import Level_1
-from player import *
+from player import Player
 
 class Game:
     def __init__(self):
@@ -41,7 +41,7 @@ class Game:
                 self.print_mouse_coord()
 
     def print_mouse_coord(self):
-        mouse = pygame.mouse.get_pos()
+        mouse = pg.mouse.get_pos()
         print("X: ", mouse[0])
         print("Y: ", mouse[1])
 

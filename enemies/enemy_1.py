@@ -1,4 +1,5 @@
-from inimigo import *
+from inimigo import Enemy
+from settings import *
 
 class Enemy_1(Enemy):
     def check_wall_collision(self, dx, dy):

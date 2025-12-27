@@ -1,4 +1,4 @@
-import pygame
+import pygame as pg
 from settings import *
 from abc import ABC, abstractmethod
 
@@ -23,7 +23,7 @@ class Level(ABC):
                 if value:
                     self.world_map[(i, j)] = value
                 else:
-                    self.wall_rects[(i, j)] = pygame.Rect(i * LADO_QUADRADINHO, j * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO)
+                    self.wall_rects[(i, j)] = pg.Rect(i * LADO_QUADRADINHO, j * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO)
     
     def insert_enemy(self, enemy):
         self.enemies.append(enemy)
@@ -42,4 +42,4 @@ class Level(ABC):
                 case 4:
                     color = QUADRADINHO_ESCURO_COLOR
 
-            pygame.draw.rect(self.game.tela, color, (pos[0] * LADO_QUADRADINHO, pos[1] * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO))
+            pg.draw.rect(self.game.tela, color, (pos[0] * LADO_QUADRADINHO, pos[1] * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO))
