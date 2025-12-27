@@ -8,19 +8,34 @@ class Level(ABC):
         self.enemies = []
         self.world_map = {}
         self.wall_rects = {}
+        self.finish_rects = {}
+        self.finished = False
 
-        self.mini_map = self.get_mini_map()
-        self.get_map_and_rects()
+        self.mini_map = self.set_mini_map()
+        self.spawn_point = self.set_spawn_point()
+        self.set_map_and_rects()
 
     @abstractmethod
-    def get_mini_map(self):
+    def set_mini_map(self):
         """Cada nível deve definir seu próprio mini_map"""
         pass
 
-    def get_map_and_rects(self):
+    @abstractmethod
+    def set_spawn_point(self):
+        """Cada nível deve definir seu próprio ponto de spawn"""
+        pass
+
+    @abstractmethod
+    def finish_level(self):
+        """Cada nível deve definir sua própria função de finalização"""
+        pass
+
+    def set_map_and_rects(self):
         for j, row in enumerate(self.mini_map):
             for i, value in enumerate(row):
                 if value:
+                    if value == 5:
+                        self.finish_rects[(i, j)] = pg.Rect(i * LADO_QUADRADINHO, j * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO)
                     self.world_map[(i, j)] = value
                 else:
                     self.wall_rects[(i, j)] = pg.Rect(i * LADO_QUADRADINHO, j * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO)
@@ -33,13 +48,15 @@ class Level(ABC):
             valor = self.world_map[(pos[0], pos[1])]
 
             match valor:
-                case 1:
+                case 1: # barra superior e inferior
                     color = "black"
-                case 2:
+                case 2: # spawn
                     color = SAFEZONE_COLOR
-                case 3:
+                case 3: # quadradinho claro
                     color = QUADRADINHO_CLARO_COLOR
-                case 4:
+                case 4: # quadradinho escuro
                     color = QUADRADINHO_ESCURO_COLOR
+                case 5: # chegada
+                    color = SAFEZONE_COLOR
 
             pg.draw.rect(self.game.tela, color, (pos[0] * LADO_QUADRADINHO, pos[1] * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO))

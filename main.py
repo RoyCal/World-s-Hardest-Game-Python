@@ -14,13 +14,17 @@ class Game:
 
     def new_game(self):
         self.current_level = Level_1(self)
-        self.player = Player(200, 300, self)
+        self.player = Player(*self.current_level.spawn_point, self)
+
+    def advance_level(self):
+        pass
 
     def update(self):
         pg.display.update()
         self.clock.tick(FPS)
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
         self.player.update()
+        self.current_level.finish_level()
         for inimigo in self.current_level.enemies:
             inimigo.update()
 
