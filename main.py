@@ -3,12 +3,15 @@ from pygame.locals import *
 from sys import exit 
 from settings import *
 from levels.level1 import Level_1
+from levels.level2 import Level_2
+from levels.level3 import Level_3
 from player import Player
 
 class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
         self.clock = pg.time.Clock()
+        self.levels = [Level_1, Level_2, Level_3]
         self.current_level = None
         self.new_game()
 
@@ -17,7 +20,8 @@ class Game:
         self.player = Player(*self.current_level.spawn_point, self)
 
     def advance_level(self):
-        pass
+        self.current_level = self.levels[self.levels.index(type(self.current_level)) + 1](self)
+        self.player.spawn(*self.current_level.spawn_point)
 
     def update(self):
         pg.display.update()

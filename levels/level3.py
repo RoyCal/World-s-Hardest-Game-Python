@@ -1,7 +1,7 @@
 from level import Level
 from enemies.enemy_1 import Enemy_1
 
-class Level_1(Level):
+class Level_3(Level):
     def set_mini_map(self):
         _ = False 
         return [
