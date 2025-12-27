@@ -16,7 +16,7 @@ class Game:
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_1(self)
+        self.current_level = Level_2(self)
         self.player = Player(*self.current_level.spawn_point, self)
 
     def advance_level(self):
@@ -50,14 +50,14 @@ class Game:
 
     def print_mouse_coord(self):
         mouse = pg.mouse.get_pos()
-        print("X: ", mouse[0])
-        print("Y: ", mouse[1])
+        print(f"X: {mouse[0]}, Y: {mouse[1]}")
 
     def run(self):
         while True:
             self.check_events()
             self.update()
             self.draw()
+            self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()

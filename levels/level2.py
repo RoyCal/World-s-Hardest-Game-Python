@@ -1,5 +1,5 @@
 from level import Level
-from enemies.enemy_1 import Enemy_1
+from enemies.enemy2 import Enemy_2
 
 class Level_2(Level):
     def set_mini_map(self):
@@ -33,3 +33,10 @@ class Level_2(Level):
 
     def __init__(self, game):
         super().__init__(game)
+
+        self.insert_enemy(Enemy_2(330, 330, 8, self.game))
+        self.insert_enemy(Enemy_2(390, 630, 8, self.game))
+        self.insert_enemy(Enemy_2(450, 330, 8, self.game))
+        self.insert_enemy(Enemy_2(510, 630, 8, self.game))
+        self.insert_enemy(Enemy_2(570, 330, 8, self.game))
+        self.insert_enemy(Enemy_2(630, 630, 8, self.game))

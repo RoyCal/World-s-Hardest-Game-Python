@@ -1,5 +1,5 @@
 from level import Level
-from enemies.enemy_1 import Enemy_1
+from enemies.enemy1 import Enemy_1
 
 class Level_1(Level):
     def set_mini_map(self):
