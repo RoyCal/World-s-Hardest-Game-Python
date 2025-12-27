@@ -36,7 +36,7 @@ class Player:
         return k * b
 
     def wall_collision(self):
-        if self.hitbox.collidelist(list(self.game.map.wall_rects.values())) != -1:
+        if self.hitbox.collidelist(list(self.game.current_level.wall_rects.values())) != -1:
             return True
         return False
 
@@ -45,7 +45,7 @@ class Player:
         self.hitbox.y = y
 
     def die(self):
-        for inimigo in self.game.inimigos:
+        for inimigo in self.game.current_level.enemies:
             if inimigo.collided:
                 self.spawn(200, 300)
     

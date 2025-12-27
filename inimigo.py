@@ -23,7 +23,7 @@ class Enemy:
         (self.x, self.y) = self.hitbox.center
 
     def check_wall(self, x, y):
-        return (x, y) not in self.game.map.world_map
+        return (x, y) not in self.game.current_level.world_map
 
     def check_wall_collision(self, dx, dy):
         if self.check_wall(int((self.x + dx * 3) / LADO_QUADRADINHO), int(self.y / LADO_QUADRADINHO)):
