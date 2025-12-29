@@ -16,11 +16,14 @@ class Game:
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_2(self)
+        self.current_level = Level_3(self)
         self.player = Player(*self.current_level.spawn_point, self)
 
     def advance_level(self):
-        self.current_level = self.levels[self.levels.index(type(self.current_level)) + 1](self)
+        try:
+            self.current_level = self.levels[self.levels.index(type(self.current_level)) + 1](self)
+        except:
+            self.current_level = self.levels[0](self)
         self.player.spawn(*self.current_level.spawn_point)
 
     def update(self):
@@ -61,6 +64,7 @@ class Game:
             self.check_events()
             self.update()
             self.draw()
+            # self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()

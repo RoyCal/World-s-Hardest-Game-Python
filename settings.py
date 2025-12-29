@@ -14,10 +14,10 @@ ENEMY_COLOR = "blue"
 
 #player
 PLAYER_SIZE = 45
-PLAYER_SPEED = 3
+PLAYER_SPEED = 4
 
 #enemy
 ENEMY_SIZE = 30
 
 #coin
-COIN_SIZE = 28
+COIN_SIZE = 30

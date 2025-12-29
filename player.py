@@ -9,7 +9,7 @@ class Player:
 
     def draw(self):
         pg.draw.rect(self.game.tela, PLAYER_COLOR, (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
-        pg.draw.rect(self.game.tela, "black", (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 6)
+        pg.draw.rect(self.game.tela, "black", (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
 
     def movement(self):
         keys = pg.key.get_pressed()

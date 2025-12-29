@@ -7,13 +7,12 @@ class Enemy(ABC):
         self.hitbox = pg.Rect(x-ENEMY_SIZE/2, y-ENEMY_SIZE/2, ENEMY_SIZE, ENEMY_SIZE)
         self.game = game
         (self.x, self.y) = self.hitbox.center
-        self.velx = speed
-        self.vely = speed
+        self.speed = speed
         self.collided = False
 
     def draw(self):
-        pg.draw.circle(self.game.tela, ENEMY_COLOR, (self.x, self.y), 15)
-        pg.draw.circle(self.game.tela, "black", (self.x, self.y), 15, 6)
+        pg.draw.circle(self.game.tela, ENEMY_COLOR, (self.x, self.y), ENEMY_SIZE/2)
+        pg.draw.circle(self.game.tela, "black", (self.x, self.y), ENEMY_SIZE/2, 8)
 
     def update(self):
         self.movement()
@@ -30,7 +29,12 @@ class Enemy(ABC):
         pass
 
     def check_player_collision(self):
-        if pg.Rect.colliderect(self.game.player.hitbox, self.hitbox):
-            self.collided = True
-        else:
-            self.collided = False
+        # ponto mais próximo do retângulo
+        closest_x = max(self.game.player.hitbox.left, min(self.x, self.game.player.hitbox.right))
+        closest_y = max(self.game.player.hitbox.top,  min(self.y, self.game.player.hitbox.bottom))
+
+        # distância ao quadrado
+        dx = self.x - closest_x
+        dy = self.y - closest_y
+
+        self.collided = dx*dx + dy*dy <= (ENEMY_SIZE/2)*(ENEMY_SIZE/2)
