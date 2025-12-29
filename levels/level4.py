@@ -57,7 +57,6 @@ class Level_4(Level):
         self.insert_enemy(Enemy_4(810, 450, 2, self.game, (720, 540)))
         self.insert_enemy(Enemy_4(780, 480, 2, self.game, (720, 540)))
         self.insert_enemy(Enemy_4(750, 510, 2, self.game, (720, 540)))
-        self.insert_enemy(Enemy_4(720, 540, 2, self.game, (720, 540)))
         self.insert_enemy(Enemy_4(690, 570, 2, self.game, (720, 540)))
         self.insert_enemy(Enemy_4(660, 600, 2, self.game, (720, 540)))
         self.insert_enemy(Enemy_4(630, 630, 2, self.game, (720, 540)))
