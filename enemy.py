@@ -4,10 +4,9 @@ from abc import ABC, abstractmethod
 
 class Enemy(ABC):
     def __init__(self, x, y, speed, game):
-        self.hitbox = pg.Rect(x-15, y-15, 30, 30)
+        self.hitbox = pg.Rect(x-ENEMY_SIZE/2, y-ENEMY_SIZE/2, ENEMY_SIZE, ENEMY_SIZE)
         self.game = game
-        self.x = self.hitbox.x + 15
-        self.y = self.hitbox.y + 15
+        (self.x, self.y) = self.hitbox.center
         self.velx = speed
         self.vely = speed
         self.collided = False

@@ -6,6 +6,7 @@ class Level(ABC):
     def __init__(self, game):
         self.game = game
         self.enemies = []
+        self.coins = []
         self.world_map = {}
         self.wall_rects = {}
         self.finish_rects = {}
@@ -14,6 +15,8 @@ class Level(ABC):
         self.mini_map = self.set_mini_map()
         self.spawn_point = self.set_spawn_point()
         self.set_map_and_rects()
+
+        self.active_checkpoint = self.spawn_point
 
     @abstractmethod
     def set_mini_map(self):
@@ -30,6 +33,9 @@ class Level(ABC):
         """Cada nível deve definir sua própria função de finalização"""
         pass
 
+    def update(self):
+        self.finish_level()
+
     def set_map_and_rects(self):
         for j, row in enumerate(self.mini_map):
             for i, value in enumerate(row):
@@ -42,6 +48,13 @@ class Level(ABC):
     
     def insert_enemy(self, enemy):
         self.enemies.append(enemy)
+
+    def insert_coin(self, coin):
+        self.coins.append(coin)
+
+    def reset_coins(self):
+        for coin in self.coins:
+            coin.collected = False
 
     def draw(self):
         for pos in self.world_map:

@@ -4,8 +4,7 @@ import pygame as pg
 class Player:
     def __init__(self, x, y, game):
         self.hitbox = pg.Rect(x, y, PLAYER_SIZE, PLAYER_SIZE)
-        self.x = self.hitbox.x
-        self.y = self.hitbox.y
+        (self.x, self.y) = self.hitbox.topleft
         self.game = game
 
     def draw(self):
@@ -47,7 +46,9 @@ class Player:
     def die(self):
         for inimigo in self.game.current_level.enemies:
             if inimigo.collided:
-                self.spawn(200, 300)
+                self.game.current_level.reset_coins()
+                self.spawn(*self.game.current_level.active_checkpoint)
+
     
     def update(self):
         self.movement()

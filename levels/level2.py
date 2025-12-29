@@ -1,5 +1,6 @@
 from level import Level
 from enemies.enemy2 import Enemy_2
+from coin import Coin
 
 class Level_2(Level):
     def set_mini_map(self):
@@ -28,15 +29,26 @@ class Level_2(Level):
     
     def finish_level(self):
         if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
-            self.finished = True
-            self.game.advance_level()
+            if all(coin.collected for coin in self.coins):
+                self.finished = True
+                self.game.advance_level()
 
     def __init__(self, game):
         super().__init__(game)
 
-        self.insert_enemy(Enemy_2(330, 330, 8, self.game))
-        self.insert_enemy(Enemy_2(390, 630, 8, self.game))
-        self.insert_enemy(Enemy_2(450, 330, 8, self.game))
-        self.insert_enemy(Enemy_2(510, 630, 8, self.game))
-        self.insert_enemy(Enemy_2(570, 330, 8, self.game))
-        self.insert_enemy(Enemy_2(630, 630, 8, self.game))
+        self.insert_enemy(Enemy_2(330, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(390, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(450, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(510, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(570, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(630, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(690, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(750, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(810, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(870, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(930, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(990, 630, 5, self.game))
+        self.insert_enemy(Enemy_2(1050, 330, -5, self.game))
+        self.insert_enemy(Enemy_2(1110, 630, 5, self.game)) 
+
+        self.insert_coin(Coin(720, 480, self.game))

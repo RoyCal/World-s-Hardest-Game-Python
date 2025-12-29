@@ -28,9 +28,11 @@ class Game:
         self.clock.tick(FPS)
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
         self.player.update()
-        self.current_level.finish_level()
+        self.current_level.update()
         for inimigo in self.current_level.enemies:
             inimigo.update()
+        for coin in self.current_level.coins:
+            coin.update()
 
     def draw(self):
         self.tela.fill(BACKGROUND_COLOR)
@@ -38,6 +40,8 @@ class Game:
         self.player.draw()
         for inimigo in self.current_level.enemies:
             inimigo.draw()
+        for coin in self.current_level.coins:
+            coin.draw()
     
     def check_events(self):
         for event in pg.event.get():
@@ -57,7 +61,6 @@ class Game:
             self.check_events()
             self.update()
             self.draw()
-            self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()
