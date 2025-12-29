@@ -2,11 +2,6 @@ from enemy import Enemy
 from settings import *
 from math import hypot
 
-# 630, 390
-# 810, 390
-# 810, 570
-# 630, 570
-
 class Enemy_3(Enemy):
     """Enemy 3 - moves along a predefined path of points."""
     

@@ -65,7 +65,7 @@ class Game:
             self.check_events()
             self.update()
             self.draw()
-            # self.print_mouse_coord()
+            self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()
