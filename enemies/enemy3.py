@@ -8,6 +8,8 @@ from math import hypot
 # 630, 570
 
 class Enemy_3(Enemy):
+    """Enemy 3 - moves along a predefined path of points."""
+    
     def __init__(self, x, y, speed, game, path):
         super().__init__(x, y, speed, game)
 

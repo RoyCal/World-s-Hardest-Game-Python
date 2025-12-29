@@ -2,6 +2,8 @@ from enemy import Enemy
 from settings import *
 
 class Enemy_2(Enemy):
+    """Enemy 2 - moves vertically and reverses direction on wall collision."""
+    
     def check_wall_collision(self):
         if self.hitbox.collidelist(list(self.game.current_level.wall_rects.values())) != -1:
             self.speed *= -1
