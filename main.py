@@ -5,18 +5,19 @@ from settings import *
 from levels.level1 import Level_1
 from levels.level2 import Level_2
 from levels.level3 import Level_3
+from levels.level4 import Level_4
 from player import Player
 
 class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
         self.clock = pg.time.Clock()
-        self.levels = [Level_1, Level_2, Level_3]
+        self.levels = [Level_1, Level_2, Level_3, Level_4]
         self.current_level = None
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_3(self)
+        self.current_level = Level_4(self)
         self.player = Player(*self.current_level.spawn_point, self)
 
     def advance_level(self):
