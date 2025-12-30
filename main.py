@@ -13,7 +13,7 @@ class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
         self.clock = pg.time.Clock()
-        self.levels = [Level_1, Level_2, Level_3, Level_4]
+        self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5]
         self.current_level = None
         self.new_game()
 
