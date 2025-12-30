@@ -56,5 +56,5 @@ class Level_5(Level):
         self.insert_enemy(Enemy_4(720, 930, 1.4, game, (720, 480)))
         self.insert_enemy(Enemy_4(720, 30, 1.4, game, (720, 480)))
 
-        self.insert_checkpoint(Checkpoint(1140, 180, LADO_QUADRADINHO, LADO_QUADRADINHO, (1148, 188), game))
-        self.insert_checkpoint(Checkpoint(180, 300, LADO_QUADRADINHO, LADO_QUADRADINHO, (188, 308), game))
+        self.insert_checkpoint(Checkpoint(1140, 180, LADO_QUADRADINHO, LADO_QUADRADINHO, game))
+        self.insert_checkpoint(Checkpoint(180, 300, LADO_QUADRADINHO, LADO_QUADRADINHO, game))

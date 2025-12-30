@@ -2,11 +2,11 @@ from settings import *
 import pygame as pg
 
 class Checkpoint:
-    def __init__(self, x, y, width, height, spawn_point, game):
+    def __init__(self, x, y, width, height, game):
         self.hitbox = pg.Rect(x, y, width, height)
         self.x = x
         self.y = y
-        self.spawn_point = spawn_point
+        self.spawn_point = (self.hitbox.centerx - PLAYER_SIZE // 2, self.hitbox.centery - PLAYER_SIZE // 2)
         self.game = game
 
     def update(self):
