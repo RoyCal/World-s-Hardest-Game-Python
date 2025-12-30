@@ -4,8 +4,8 @@ from settings import *
 from enemies.enemy4 import Enemy_4
 
 class Level_4(Level):
-    def set_mini_map(self): # in the original game, level 3 has a bug where the player goes through walls. This is what made the level possible to be completed. 
-        _ = False           # on this version, the walls are correctly implemented, so the map was slightly changed to make the level completable.
+    def set_mini_map(self):
+        _ = False           
         return [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],

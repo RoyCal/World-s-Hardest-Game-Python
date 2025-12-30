@@ -7,6 +7,7 @@ class Level(ABC):
         self.game = game
         self.enemies = []
         self.coins = []
+        self.checkpoints = []
         self.world_map = {}
         self.wall_rects = {}
         self.finish_rects = {}
@@ -51,6 +52,9 @@ class Level(ABC):
 
     def insert_coin(self, coin):
         self.coins.append(coin)
+    
+    def insert_checkpoint(self, checkpoint):
+        self.checkpoints.append(checkpoint)
 
     def reset_coins(self):
         for coin in self.coins:

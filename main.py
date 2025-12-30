@@ -6,6 +6,7 @@ from levels.level1 import Level_1
 from levels.level2 import Level_2
 from levels.level3 import Level_3
 from levels.level4 import Level_4
+from levels.level5 import Level_5
 from player import Player
 
 class Game:
@@ -17,7 +18,7 @@ class Game:
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_4(self)
+        self.current_level = Level_1(self)
         self.player = Player(*self.current_level.spawn_point, self)
 
     def advance_level(self):
@@ -37,6 +38,8 @@ class Game:
             inimigo.update()
         for coin in self.current_level.coins:
             coin.update()
+        for checkpoint in self.current_level.checkpoints:
+            checkpoint.update()
 
     def draw(self):
         self.tela.fill(BACKGROUND_COLOR)
@@ -65,7 +68,7 @@ class Game:
             self.check_events()
             self.update()
             self.draw()
-            self.print_mouse_coord()
+            # self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()
