@@ -8,13 +8,15 @@ from levels.level3 import Level_3
 from levels.level4 import Level_4
 from levels.level5 import Level_5
 from levels.level6 import Level_6
+from levels.level7 import Level_7
+from levels.level8 import Level_8
 from player import Player
 
 class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
         self.clock = pg.time.Clock()
-        self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6]
+        self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8]
         self.current_level = None
         self.new_game()
 
@@ -69,7 +71,7 @@ class Game:
             self.check_events()
             self.update()
             self.draw()
-            # self.print_mouse_coord()
+            self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()
