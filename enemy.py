@@ -37,4 +37,4 @@ class Enemy(ABC):
         dx = self.x - closest_x
         dy = self.y - closest_y
 
-        self.collided = dx*dx + dy*dy <= (ENEMY_SIZE/2)*(ENEMY_SIZE/2)
+        self.collided = dx*dx + dy*dy <= (ENEMY_SIZE/2-ENEMY_HITBOX_CORRECTION)*(ENEMY_SIZE/2-ENEMY_HITBOX_CORRECTION)
