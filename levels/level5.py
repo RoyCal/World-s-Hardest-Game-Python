@@ -27,11 +27,6 @@ class Level_5(Level):
 
     def set_spawn_point(self):
         return (240-PLAYER_SIZE/2, 210-PLAYER_SIZE/2)
-    
-    def finish_level(self):
-        if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
-            self.finished = True
-            self.game.advance_level()
 
     def __init__(self, game):
         super().__init__(game)

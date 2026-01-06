@@ -12,7 +12,7 @@ class Level_3(Level):
             [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
             [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
             [_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _],
-            [_, _, _, _, _, _, _, _, _, _, 4, 3, _, _, _, _, _, _, _, _, _, _, _, _],
+            [_, _, _, _, _, _, _, _, _, _, 4, _, _, _, _, _, _, _, _, _, _, _, _, _],
             [_, _, _, _, _, _, _, _, _, _, 3, 4, 3, 4, _, _, _, _, _, _, _, _, _, _],
             [_, _, _, _, _, _, _, _, _, _, 4, 5, 5, 3, _, _, _, _, _, _, _, _, _, _],
             [_, _, _, _, _, _, _, _, _, _, 3, 5, 5, 4, _, _, _, _, _, _, _, _, _, _],
@@ -27,12 +27,6 @@ class Level_3(Level):
 
     def set_spawn_point(self):
         return (720-PLAYER_SIZE/2, 480-PLAYER_SIZE/2)
-    
-    def finish_level(self):
-        if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
-            if all(coin.collected for coin in self.coins):
-                self.finished = True
-                self.game.advance_level()
 
     def __init__(self, game):
         super().__init__(game)

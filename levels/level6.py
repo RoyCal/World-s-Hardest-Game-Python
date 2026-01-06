@@ -29,12 +29,6 @@ class Level_6(Level):
     def set_spawn_point(self):
         return (240-PLAYER_SIZE/2, 240-PLAYER_SIZE/2)
     
-    def finish_level(self):
-        if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
-            if all(coin.collected for coin in self.coins):
-                self.finished = True
-                self.game.advance_level()
-    
     def create_enemy_windmill(self, x, y):
         self.insert_enemy(Enemy_4(x, y, 2.1, self.game, (x, y)))
         self.insert_enemy(Enemy_4(x - 52.5, y, 2.1, self.game, (x, y)))

@@ -29,10 +29,11 @@ class Level(ABC):
         """Cada nível deve definir seu próprio ponto de spawn"""
         pass
 
-    @abstractmethod
     def finish_level(self):
-        """Cada nível deve definir sua própria função de finalização"""
-        pass
+        if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
+            if all(coin.collected for coin in self.coins):
+                self.finished = True
+                self.game.advance_level()
 
     def update(self):
         self.finish_level()

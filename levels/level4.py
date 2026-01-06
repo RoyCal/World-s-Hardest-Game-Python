@@ -27,12 +27,6 @@ class Level_4(Level):
 
     def set_spawn_point(self):
         return (720-PLAYER_SIZE/2, 200-PLAYER_SIZE/2)
-    
-    def finish_level(self):
-        if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
-            if all(coin.collected for coin in self.coins):
-                self.finished = True
-                self.game.advance_level()
 
     def __init__(self, game):
         super().__init__(game)
