@@ -6,13 +6,17 @@ class Player:
         self.hitbox = pg.Rect(x, y, PLAYER_SIZE, PLAYER_SIZE)
         (self.x, self.y) = self.hitbox.topleft
         self.game = game
+        self.image = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
         self.dying = False
+        self.alpha = 255
 
     def draw(self):
-        if self.dying:
-            return
-        pg.draw.rect(self.game.overlay, PLAYER_COLOR, (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
-        pg.draw.rect(self.game.overlay, "black", (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
+        pg.draw.rect(self.image, PLAYER_COLOR, (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
+        pg.draw.rect(self.image, "black", (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
+
+        self.game.tela.blit(self.image, (0, 0))
+
+        print(self.alpha)
 
     def movement(self):
         if self.dying:
@@ -50,17 +54,24 @@ class Player:
         self.dying = False
 
     def dying_animation(self):
-        pg.draw.rect(self.game.tela, pg.Color(PLAYER_COLOR), (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
-        pg.draw.rect(self.game.tela, pg.Color("black"), (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
+        self.alpha -= 5
+        self.image.set_alpha(self.alpha)
+        if self.alpha <= 0:
+            self.alpha = 255
+            self.image.set_alpha(self.alpha)
+            self.game.current_level.reset_coins()
+            self.spawn(*self.game.current_level.active_checkpoint)
 
     def die(self):
+        if self.dying:
+            self.dying_animation()
+            return
         for inimigo in self.game.current_level.enemies:
-            if inimigo.collided or self.dying:
+            if inimigo.collided:
                 self.dying = True
-                self.game.current_level.reset_coins()
-                self.spawn(*self.game.current_level.active_checkpoint)
     
     def update(self):
+        self.image.fill((0, 0, 0, 0))
         self.movement()
         self.die()
 

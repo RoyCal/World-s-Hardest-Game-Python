@@ -34,27 +34,37 @@ class Game:
         self.player.spawn(*self.current_level.spawn_point)
 
     def update(self):
-        pg.display.update()
         self.clock.tick(FPS)
-        pg.display.set_caption(f'{self.clock.get_fps() :.1f}')
-        self.player.update()
+        pg.display.set_caption(f'{self.clock.get_fps():.1f}')
+
         self.current_level.update()
+        self.player.update()
+
         for inimigo in self.current_level.enemies:
             inimigo.update()
         for coin in self.current_level.coins:
             coin.update()
         for checkpoint in self.current_level.checkpoints:
             checkpoint.update()
-        self.tela.blit(self.overlay, (0, 0))
 
     def draw(self):
-        self.overlay.fill(BACKGROUND_COLOR)
+        self.tela.fill(BACKGROUND_COLOR)
+
+        self.overlay.fill((0, 0, 0, 0))
+
         self.current_level.draw()
-        self.player.draw()
+
         for inimigo in self.current_level.enemies:
             inimigo.draw()
         for coin in self.current_level.coins:
             coin.draw()
+
+        self.tela.blit(self.overlay, (0, 0))
+
+        self.player.draw()
+
+        pg.display.flip()
+
     
     def check_events(self):
         for event in pg.event.get():
