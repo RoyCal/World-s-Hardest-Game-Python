@@ -10,8 +10,8 @@ class Coin:
 
     def draw(self):
         if not self.collected:
-            pg.draw.circle(self.game.tela, COIN_COLOR, (self.x, self.y), COIN_SIZE/2)
-            pg.draw.circle(self.game.tela, "black", (self.x, self.y), COIN_SIZE/2, 8)
+            pg.draw.circle(self.game.overlay, COIN_COLOR, (self.x, self.y), COIN_SIZE/2)
+            pg.draw.circle(self.game.overlay, "black", (self.x, self.y), COIN_SIZE/2, 8)
 
     def check_player_collision(self):
         if pg.Rect.colliderect(self.game.player.hitbox, self.hitbox):

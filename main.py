@@ -16,6 +16,7 @@ from player import Player
 class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
+        self.overlay = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
         self.clock = pg.time.Clock()
         self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9]
         self.current_level = None
@@ -44,9 +45,10 @@ class Game:
             coin.update()
         for checkpoint in self.current_level.checkpoints:
             checkpoint.update()
+        self.tela.blit(self.overlay, (0, 0))
 
     def draw(self):
-        self.tela.fill(BACKGROUND_COLOR)
+        self.overlay.fill(BACKGROUND_COLOR)
         self.current_level.draw()
         self.player.draw()
         for inimigo in self.current_level.enemies:

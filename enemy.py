@@ -11,8 +11,8 @@ class Enemy(ABC):
         self.collided = False
 
     def draw(self):
-        pg.draw.circle(self.game.tela, ENEMY_COLOR, (self.x, self.y), ENEMY_SIZE/2)
-        pg.draw.circle(self.game.tela, "black", (self.x, self.y), ENEMY_SIZE/2, 8)
+        pg.draw.circle(self.game.overlay, ENEMY_COLOR, (self.x, self.y), ENEMY_SIZE/2)
+        pg.draw.circle(self.game.overlay, "black", (self.x, self.y), ENEMY_SIZE/2, 8)
 
     def update(self):
         self.movement()

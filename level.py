@@ -77,4 +77,4 @@ class Level(ABC):
                 case 5: # chegada
                     color = SAFEZONE_COLOR
 
-            pg.draw.rect(self.game.tela, color, (pos[0] * LADO_QUADRADINHO, pos[1] * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO))
+            pg.draw.rect(self.game.overlay, color, (pos[0] * LADO_QUADRADINHO, pos[1] * LADO_QUADRADINHO, LADO_QUADRADINHO, LADO_QUADRADINHO))
