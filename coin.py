@@ -14,8 +14,9 @@ class Coin:
             pg.draw.circle(self.game.overlay, "black", (self.x, self.y), COIN_SIZE/2, 8)
 
     def check_player_collision(self):
-        if pg.Rect.colliderect(self.game.player.hitbox, self.hitbox):
+        if pg.Rect.colliderect(self.game.player.hitbox, self.hitbox) and not self.collected:
             self.collected = True
+            self.game.sound.coin_collect.play()
 
     def reset(self):
         self.collected = False

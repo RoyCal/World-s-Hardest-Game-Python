@@ -16,8 +16,6 @@ class Player:
 
         self.game.tela.blit(self.image, (0, 0))
 
-        print(self.alpha)
-
     def movement(self):
         if self.dying:
             return
@@ -68,6 +66,7 @@ class Player:
             return
         for inimigo in self.game.current_level.enemies:
             if inimigo.collided:
+                self.game.sound.player_dying.play()
                 self.dying = True
     
     def update(self):

@@ -12,12 +12,14 @@ from levels.level7 import Level_7
 from levels.level8 import Level_8
 from levels.level9 import Level_9
 from player import Player
+from sound import Sound
 
 class Game:
     def __init__(self):
         self.tela = pg.display.set_mode((LARGURA, ALTURA))
         self.overlay = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
         self.clock = pg.time.Clock()
+        self.sound = Sound(self)
         self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9]
         self.current_level = None
         self.new_game()
@@ -25,6 +27,7 @@ class Game:
     def new_game(self):
         self.current_level = Level_1(self)
         self.player = Player(*self.current_level.spawn_point, self)
+        self.sound.main_theme.play(-1)
 
     def advance_level(self):
         try:

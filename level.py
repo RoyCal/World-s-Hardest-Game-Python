@@ -32,6 +32,7 @@ class Level(ABC):
     def finish_level(self):
         if self.game.player.hitbox.collidelist(list(self.finish_rects.values())) != -1:
             if all(coin.collected for coin in self.coins):
+                self.game.sound.level_complete.play()
                 self.finished = True
                 self.game.advance_level()
 
