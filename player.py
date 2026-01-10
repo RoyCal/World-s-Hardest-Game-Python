@@ -6,15 +6,15 @@ class Player:
         self.hitbox = pg.Rect(x, y, PLAYER_SIZE, PLAYER_SIZE)
         (self.x, self.y) = self.hitbox.topleft
         self.game = game
-        self.image = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
+        self.overlay = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
         self.dying = False
         self.alpha = 255
 
     def draw(self):
-        pg.draw.rect(self.image, PLAYER_COLOR, (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
-        pg.draw.rect(self.image, "black", (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
+        pg.draw.rect(self.overlay, pg.Color(*PLAYER_COLOR, self.alpha), (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE))
+        pg.draw.rect(self.overlay, pg.Color(0, 0, 0, self.alpha), (self.x, self.y, PLAYER_SIZE, PLAYER_SIZE), 8)
 
-        self.game.tela.blit(self.image, (0, 0))
+        self.game.tela.blit(self.overlay, (0, 0))
 
     def movement(self):
         if self.dying:
@@ -53,10 +53,8 @@ class Player:
 
     def dying_animation(self):
         self.alpha -= 5
-        self.image.set_alpha(self.alpha)
         if self.alpha <= 0:
             self.alpha = 255
-            self.image.set_alpha(self.alpha)
             self.game.current_level.reset_coins()
             self.spawn(*self.game.current_level.active_checkpoint)
 
@@ -70,7 +68,7 @@ class Player:
                 self.dying = True
     
     def update(self):
-        self.image.fill((0, 0, 0, 0))
+        self.overlay.fill((0, 0, 0, 0))
         self.movement()
         self.die()
 
