@@ -7,9 +7,8 @@ from .level6 import Level_6
 from .level7 import Level_7
 from .level8 import Level_8
 from .level9 import Level_9
+from .level10 import Level_10
 
-__all__ = [
-    "Level_1", "Level_2", "Level_3",
-    "Level_4", "Level_5", "Level_6",
-    "Level_7", "Level_8", "Level_9"
-]
+LEVEL_QUANTITY = 10
+
+__all__ = [f"Level_{i}" for i in range(1, LEVEL_QUANTITY + 1)] + ["LEVEL_QUANTITY"]

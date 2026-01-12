@@ -12,12 +12,12 @@ class Game:
         self.overlay = pg.Surface((LARGURA, ALTURA), pg.SRCALPHA)
         self.clock = pg.time.Clock()
         self.sound = Sound(self)
-        self.levels = [Level_1, Level_2, Level_3, Level_4, Level_5, Level_6, Level_7, Level_8, Level_9]
+        self.levels = [globals()[f"Level_{i}"] for i in range(1, LEVEL_QUANTITY + 1)]
         self.current_level = None
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_1(self)
+        self.current_level = Level_10(self)
         self.player = Player(*self.current_level.spawn_point, self)
         self.sound.main_theme.play(-1)
 
