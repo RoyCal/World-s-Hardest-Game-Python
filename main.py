@@ -2,15 +2,7 @@ import pygame as pg
 from pygame.locals import *
 from sys import exit 
 from settings import *
-from levels.level1 import Level_1
-from levels.level2 import Level_2
-from levels.level3 import Level_3
-from levels.level4 import Level_4
-from levels.level5 import Level_5
-from levels.level6 import Level_6
-from levels.level7 import Level_7
-from levels.level8 import Level_8
-from levels.level9 import Level_9
+from levels import *
 from player import Player
 from sound import Sound
 
