@@ -17,7 +17,7 @@ class Game:
         self.new_game()
 
     def new_game(self):
-        self.current_level = Level_10(self)
+        self.current_level = Level_1(self)
         self.player = Player(*self.current_level.spawn_point, self)
         self.sound.main_theme.play(-1)
 
