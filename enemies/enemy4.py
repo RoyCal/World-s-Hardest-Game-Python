@@ -18,10 +18,10 @@ class Enemy_4(Enemy):
     def movement(self):
         (cx, cy) = self.trajectory_center
         r = self.trajectory_radius
-        theta = radians(self.angle)
 
-        self.hitbox.centerx = cx + r * cos(theta)
-        self.hitbox.centery = cy + r * sin(theta)
-        
         if self.trajectory_radius != 0:
             self.angle += self.speed
+
+        theta = radians(self.angle)
+        self.hitbox.centerx = cx + r * cos(theta)
+        self.hitbox.centery = cy + r * sin(theta)
