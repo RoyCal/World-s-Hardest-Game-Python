@@ -9,7 +9,8 @@ from .level8 import Level_8
 from .level9 import Level_9
 from .level10 import Level_10
 from .level11 import Level_11
+from .level12 import Level_12
 
-LEVEL_QUANTITY = 11
+LEVEL_QUANTITY = 12
 
 __all__ = [f"Level_{i}" for i in range(1, LEVEL_QUANTITY + 1)] + ["LEVEL_QUANTITY"]
