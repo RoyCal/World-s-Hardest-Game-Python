@@ -1,6 +1,5 @@
 from level import Level
 from enemies.enemy6 import Enemy_6
-from checkpoint import Checkpoint
 from settings import *
 from coin import Coin
 
