@@ -14,7 +14,6 @@ class Game:
         self.sound = Sound(self)
         self.levels = [globals()[f"Level_{i}"] for i in range(1, LEVEL_QUANTITY + 1)]
         self.current_level = None
-        self.new_game()
 
     def new_game(self):
         self.current_level = Level_1(self)
@@ -75,11 +74,12 @@ class Game:
         print(f"X: {mouse[0]}, Y: {mouse[1]}")
 
     def run(self):
+        self.new_game()
         while True:
             self.check_events()
             self.update()
             self.draw()
-            self.print_mouse_coord()
+            # self.print_mouse_coord()
 
 if __name__ == "__main__":
     game = Game()

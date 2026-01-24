@@ -20,19 +20,19 @@ class Player:
         if self.dying:
             return
         keys = pg.key.get_pressed()
-        if keys[pg.K_w]:
+        if keys[pg.K_w] or keys[pg.K_UP]:
             self.hitbox.y += -PLAYER_SPEED
             if self.wall_collision():
                 self.hitbox.y = self.nearest_multiple(self.hitbox.y, LADO_QUADRADINHO)
-        if keys[pg.K_s]:
+        if keys[pg.K_s] or keys[pg.K_DOWN]:
             self.hitbox.y += PLAYER_SPEED
             if self.wall_collision():
                 self.hitbox.y = self.nearest_multiple(self.hitbox.y, LADO_QUADRADINHO) + LADO_QUADRADINHO - PLAYER_SIZE
-        if keys[pg.K_a]:
+        if keys[pg.K_a] or keys[pg.K_LEFT]:
             self.hitbox.x += -PLAYER_SPEED
             if self.wall_collision():
                 self.hitbox.x = self.nearest_multiple(self.hitbox.x, LADO_QUADRADINHO)
-        if keys[pg.K_d]:
+        if keys[pg.K_d] or keys[pg.K_RIGHT]:
             self.hitbox.x += PLAYER_SPEED
             if self.wall_collision():
                 self.hitbox.x = self.nearest_multiple(self.hitbox.x, LADO_QUADRADINHO) + LADO_QUADRADINHO - PLAYER_SIZE
