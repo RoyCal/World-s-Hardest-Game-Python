@@ -11,7 +11,8 @@ from .level10 import Level_10
 from .level11 import Level_11
 from .level12 import Level_12
 from .level13 import Level_13
+from .level14 import Level_14
 
-LEVEL_QUANTITY = 13
+LEVEL_QUANTITY = 14
 
 __all__ = [f"Level_{i}" for i in range(1, LEVEL_QUANTITY + 1)] + ["LEVEL_QUANTITY"]
